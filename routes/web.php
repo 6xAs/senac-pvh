@@ -23,12 +23,15 @@ Route::get('/dashboard', function () {
     return view('dashboard', ['name' => $name] );
 })->middleware(['auth'])->name('dashboard');
 
+
+// Rotas do Banner
 Route::get('/cadastrar-banner', function () {
     return view('cadastrar-banner');
 })->middleware(['auth'])->name('cadastrar-banner');
 
-// Rotas do Banner
+
 Route::post('/store-banner', [BannerController::class, 'store'])->middleware(['auth'])->name('store-banner');
+Route::get('/listar-banner', [BannerController::class, 'index'])->middleware(['auth'])->name('listar-banner');
 
 
 require __DIR__.'/auth.php';

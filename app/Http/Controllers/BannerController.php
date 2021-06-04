@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Redirect;
 
 
 class BannerController extends Controller
@@ -15,7 +17,11 @@ class BannerController extends Controller
      */
     public function index()
     {
-        //
+        // Listar os dados do meu Bando de Dados (Ps. Usando Model como ponte)
+        $banners = Banner::all();
+        return view('listar-banner', compact('banners'));
+
+
     }
 
     /**
@@ -36,14 +42,23 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Essa linha é uma instância da minha classe(Model) Banner
         $banner = new Banner;
 
+        // Esse bloco de código pega o nome do usuário logado.
+        $user                   = Auth::user()->name; // Essa linha pega o usuário logado, eu acho!!
 
-        $banner->titulo = $request->input('titulo');
-        $banner->image = $request->input('image');
+        $banner->user           = $user;
+        $banner->nome           = $request->input('nome');
+        $banner->imagem         = $request->input('imagem');
 
         $banner->save();
+
+        $request->Session()->flash('message', 'Banner inserido com sucesso😁');
+        return Redirect::to('/listar-banner');
+
+
+
 
     }
 

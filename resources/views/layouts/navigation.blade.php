@@ -22,6 +22,11 @@
                     <x-nav-link :href="route('cadastrar-banner')" :active="request()->routeIs('cadastrar-banner')">
                         {{ __('Cadastrar Banner') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('listar-banner')" :active="request()->routeIs('listar-banner')">
+                        {{ __('Listar Banner') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 

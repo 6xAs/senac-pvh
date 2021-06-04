@@ -16,15 +16,15 @@
                     @csrf
                     <!-- Name -->
                     <div>
-                        <label for="titulo">Título</label>
+                        <label for="nome">Nome</label>
 
-                        <x-input id="titulo" class="block mt-1 w-full" type="text" name="titulo" :value="old('titulo')"  autofocus />
+                        <x-input id="titulo" class="block mt-1 w-full" type="text" name="nome" :value="old('titulo')"  autofocus />
                     </div>
 
                     <div>
                         <label for="imagem">Imagem</label>
 
-                        <x-input id="image" class="block mt-1 w-full" type="text" name="image" :value="old('image')"  autofocus />
+                        <x-input id="image" class="block mt-1 w-full" type="text" name="imagem" :value="old('image')"  autofocus />
                     </div>
 
 
